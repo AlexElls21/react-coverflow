@@ -86,11 +86,13 @@ class Coverflow extends Component {
       }
     });
 
-    // const eventListener = window && window.addEventListener;
+    if (window) {
+      const eventListener = window && window.addEventListener;
 
-    // if (eventListener) {
-    //   window.addEventListener('resize', this.updateDimensions.bind(this));
-    // }
+      if (eventListener) {
+        window.addEventListener("resize", this.updateDimensions.bind(this));
+      }
+    }
   }
 
   componentWillReceiveProps(nextProps) {
@@ -263,7 +265,9 @@ class Coverflow extends Component {
       // If on the active figure
       if (typeof action === "string") {
         // If action is a URL (string), follow the link
-        // window.open(action, '_blank');
+        if (window) {
+          window.open(action, "_blank");
+        }
       }
 
       this._removePointerEvents();
